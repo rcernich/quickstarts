@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<switchyard xmlns="urn:switchyard-config:switchyard:1.0" name="reporting-service"
+  targetNamespace="urn:org.switchyard.quickstarts.demos.reporting:reporting-service:0.0.1">
+  <composite xmlns="http://docs.oasis-open.org/ns/opencsa/sca/200912" name="reporting-service"
+    targetNamespace="urn:org.switchyard.quickstarts.demos.reporting:reporting-service:0.0.1">
+    <service name="ReportQueryService" promote="ManagementService">
+      <interface.java interface="org.switchyard.quickstarts.demos.reporting.services.ReportQueryService" />
+    </service>
+    <service name="VerificationService" promote="VerificationService">
+      <binding.camel xmlns="urn:switchyard-component-camel:config:1.0" configURI="quartz://verification/warning/?cron=0+30+18,19+?+*+MON-FRI">
+        <messageComposer xmlns="urn:switchyard-config:switchyard:1.0" class="org.switchyard.quickstarts.demos.reporting.service.QuartzMessageComposer" />
+        <operationSelector operationName="verifyTransmissionStatus" />
+      </binding.camel>
+      <binding.camel xmlns="urn:switchyard-component-camel:config:1.0" configURI="quartz://verification/error/?cron=0+0+20+?+*+MON-FRI">
+        <messageComposer xmlns="urn:switchyard-config:switchyard:1.0" class="org.switchyard.quickstarts.demos.reporting.service.QuartzMessageComposer" />
+        <operationSelector operationName="verifyTransmitted" />
+      </binding.camel>
+    </service>
+    <service name="ManagementService" promote="ManagementService">
+      <binding.soap xmlns="urn:switchyard-component-soap:config:1.0">
+        <wsdl>wsdl/ManagementService.wsdl</wsdl>
+        <contextPath>reporting</contextPath>
+      </binding.soap>
+    </service>
+  </composite>
+</switchyard>

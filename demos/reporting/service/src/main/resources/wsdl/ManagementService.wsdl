@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
+  xmlns:schema="urn:org.switchyard.quickstarts.demos.reporting:reporting-service:0.0.1" xmlns:tns="urn:org.switchyard.quickstarts.demos.reporting:reporting-service:0.0.1"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="urn:org.switchyard.quickstarts.demos.reporting:reporting-service:0.0.1">
+  <wsdl:types>
+    <xs:schema>
+      <xs:import namespace="urn:org.switchyard.quickstarts.demos.reporting:reporting-service:0.0.1" schemaLocation="ManagementService.xsd" />
+    </xs:schema>
+  </wsdl:types>
+
+  <wsdl:message name="reportProcessedRequest">
+    <wsdl:part name="parameters" element="schema:reportProcessed" />
+  </wsdl:message>
+  <wsdl:message name="reportRequiredRequest">
+    <wsdl:part name="parameters" element="schema:reportRequired" />
+  </wsdl:message>
+  <wsdl:message name="reportAcknowledgedRequest">
+    <wsdl:part name="parameters" element="schema:reportAcknowledged" />
+  </wsdl:message>
+  <wsdl:message name="reportClosedRequest">
+    <wsdl:part name="parameters" element="schema:reportClosed" />
+  </wsdl:message>
+  <wsdl:message name="reportGeneratedRequest">
+    <wsdl:part name="parameters" element="schema:reportGenerated" />
+  </wsdl:message>
+  <wsdl:message name="reportTrasmittedRequest">
+    <wsdl:part name="parameters" element="schema:reportTrasmitted" />
+  </wsdl:message>
+  <wsdl:message name="attachNotesRequest">
+    <wsdl:part name="parameters" element="schema:attachNotes" />
+  </wsdl:message>
+  <wsdl:message name="reportTransmissionFailedRequest">
+    <wsdl:part name="parameters" element="schema:reportTransmissionFailed" />
+  </wsdl:message>
+
+  <wsdl:portType name="ManagementServicePortType">
+    <wsdl:operation name="reportProcessed">
+      <wsdl:input message="tns:reportProcessedRequest" wsaw:Action="urn:reportProcessed" />
+    </wsdl:operation>
+    <wsdl:operation name="reportRequired">
+      <wsdl:input message="tns:reportRequiredRequest" wsaw:Action="urn:reportRequired" />
+    </wsdl:operation>
+    <wsdl:operation name="reportAcknowledged">
+      <wsdl:input message="tns:reportAcknowledgedRequest" wsaw:Action="urn:reportAcknowledged" />
+    </wsdl:operation>
+    <wsdl:operation name="reportClosed">
+      <wsdl:input message="tns:reportClosedRequest" wsaw:Action="urn:reportClosed" />
+    </wsdl:operation>
+    <wsdl:operation name="reportGenerated">
+      <wsdl:input message="tns:reportGeneratedRequest" wsaw:Action="urn:reportGenerated" />
+    </wsdl:operation>
+    <wsdl:operation name="reportTrasmitted">
+      <wsdl:input message="tns:reportTrasmittedRequest" wsaw:Action="urn:reportTrasmitted" />
+    </wsdl:operation>
+    <wsdl:operation name="attachNotes">
+      <wsdl:input message="tns:attachNotesRequest" wsaw:Action="urn:attachNotes" />
+    </wsdl:operation>
+    <wsdl:operation name="reportTransmissionFailed">
+      <wsdl:input message="tns:reportTransmissionFailedRequest" wsaw:Action="urn:reportTransmissionFailed" />
+    </wsdl:operation>
+  </wsdl:portType>
+
+  <wsdl:binding name="ManagementServiceBinding" type="tns:ManagementServicePortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <wsdl:operation name="reportProcessed">
+      <soap:operation soapAction="urn:reportProcessed" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="reportAcknowledged">
+      <soap:operation soapAction="urn:reportAcknowledged" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="reportRequired">
+      <soap:operation soapAction="urn:reportRequired" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="reportClosed">
+      <soap:operation soapAction="urn:reportClosed" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="reportGenerated">
+      <soap:operation soapAction="urn:reportGenerated" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="reportTrasmitted">
+      <soap:operation soapAction="urn:reportTrasmitted" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="attachNotes">
+      <soap:operation soapAction="urn:attachNotes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="reportTransmissionFailed">
+      <soap:operation soapAction="urn:reportTransmissionFailed" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+
+  <wsdl:service name="ManagementService">
+    <wsdl:port name="ManagementServiceHttpSoapEndpoint" binding="tns:ManagementServiceBinding">
+      <soap:address location="http://localhost:18001/reporting/ManagementService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
