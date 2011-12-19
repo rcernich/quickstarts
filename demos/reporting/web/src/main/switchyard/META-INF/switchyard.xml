@@ -3,22 +3,5 @@
   targetNamespace="urn:org.switchyard.quickstarts.demos.reporting:reporting-service:0.0.1">
   <composite xmlns="http://docs.oasis-open.org/ns/opencsa/sca/200912" name="reporting-web"
     targetNamespace="urn:org.switchyard.quickstarts.demos.reporting:reporting-service:0.0.1">
-    <!-- 
-    <reference name="ManagementService" multiplicity="1..1" promote="ManagementService" />
-    <service name="ManagementServiceProxy" promote="ManagementServiceProxy"/>
-    <component name="ManagementServiceProxy">
-      <implementation.camel xmlns="urn:switchyard-component-camel:config:1.0">
-        <route xmlns="http://camel.apache.org/schema/spring">
-          <to uri="switchyard://ManagementService" />
-        </route>
-      </implementation.camel>
-      <service name="ManagementServiceProxy">
-        <interface.java interface="org.switchyard.quickstarts.demos.reporting.web.services.ManagementService" />
-      </service>
-      <reference name="ManagementService">
-        <interface.java interface="org.switchyard.quickstarts.demos.reporting.web.services.ManagementService" />
-      </reference>
-    </component>
-     -->
   </composite>
 </switchyard>

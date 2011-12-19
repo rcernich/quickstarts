@@ -20,9 +20,10 @@ package org.switchyard.quickstarts.demos.reporting.web;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
-import javax.inject.Named;
 
 import org.switchyard.component.bean.Reference;
 import org.switchyard.quickstarts.demos.reporting.services.ManagementService;
@@ -31,13 +32,15 @@ import org.switchyard.quickstarts.demos.reporting.services.ReportQueryService.Re
 /**
  * 
  */
-@Named("requireReportProcessor")
+@ManagedBean(name="requireReportProcessor")
 @RequestScoped
 public class RequireReportProcessor {
 
     @Inject
-    @Reference("ManagementServiceProxy")
+    @Reference("ManagementService")
     private ManagementService managementService;
+    @ManagedProperty(value="#{reportId}")
+    private ReportId reportId;
 
     /**
      * Create a new RequireReportProcessor.
@@ -45,8 +48,15 @@ public class RequireReportProcessor {
     public RequireReportProcessor() {
     }
 
+    public ReportId getReportId() {
+        return reportId;
+    }
+
+    public void setReportId(ReportId reportId) {
+        this.reportId = reportId;
+    }
+
     public String execute() {
-        ReportId reportId = (ReportId)FacesContext.getCurrentInstance().getELContext().getVariableMapper().resolveVariable("reportId");
         managementService.reportRequired(reportId);
         FacesContext.getCurrentInstance().addMessage(
                 null,

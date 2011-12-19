@@ -19,7 +19,7 @@
     <version.javassist>3.11.0.GA</version.javassist>
     <version.junit>4.8.1</version.junit>
     <version.slf4j>1.6.1</version.slf4j>
-    <version.switchyard>0.3.0.Final</version.switchyard>
+    <version.switchyard>0.4.0-SNAPSHOT</version.switchyard>
   </properties>
 
   <dependencyManagement>

@@ -118,21 +118,6 @@
       <version>${version.switchyard}</version>
       <scope>provided</scope>
     </dependency>
-    <dependency>
-      <groupId>org.switchyard.components</groupId>
-      <artifactId>switchyard-component-camel</artifactId>
-      <version>${version.switchyard}</version>
-      <scope>provided</scope>
-    </dependency>
-
-    <!-- for debug -->
-    <dependency>
-      <groupId>org.switchyard</groupId>
-      <artifactId>switchyard-deploy</artifactId>
-      <version>${version.switchyard}</version>
-      <scope>provided</scope>
-    </dependency>
-
 
     <dependency>
       <groupId>com.sun.faces</groupId>
