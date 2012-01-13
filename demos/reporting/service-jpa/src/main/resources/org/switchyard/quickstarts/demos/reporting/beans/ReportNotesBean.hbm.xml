@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 11, 2012 12:50:58 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+ <class
+  name="org.switchyard.quickstarts.demos.reporting.beans.ReportNotesBean"
+  proxy="org.switchyard.quickstarts.demos.reporting.ReportNotes" table="REPORTNOTES">
+  <id name="id" type="java.lang.Long">
+   <column name="ID"/>
+   <generator class="assigned"/>
+  </id>
+  <property generated="never" lazy="false" name="notes" type="java.lang.String">
+   <column name="NOTES"/>
+  </property>
+  <property generated="never" lazy="false" name="timestamp" type="java.util.Date">
+   <column name="TIMESTAMP"/>
+  </property>
+ </class>
+</hibernate-mapping>

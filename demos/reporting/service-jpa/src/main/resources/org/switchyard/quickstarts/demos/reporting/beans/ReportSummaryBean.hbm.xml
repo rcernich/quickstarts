@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 11, 2012 12:50:58 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+ <class
+  name="org.switchyard.quickstarts.demos.reporting.beans.ReportSummaryBean"
+  proxy="org.switchyard.quickstarts.demos.reporting.ReportSummary" table="REPORTSUMMARY">
+  <composite-id
+   class="org.switchyard.quiddit.demo.reporting.ReportIdBean"
+   mapped="false" name="reportId" unsaved-value="undefined">
+   <key-property column="CLIENTID" name="clientId" type="java.lang.String"/>
+   <key-property column="DESTINATIONID" name="destinationId" type="java.lang.String"/>
+   <key-property column="REPORTINGDATE" name="reportingDate" type="java.lang.String"/>
+  </composite-id>
+  <property generated="never" lazy="false" name="summary" type="java.lang.String">
+   <column name="SUMMARY"/>
+  </property>
+  <list lazy="true" name="notes" table="REPORTNOTES">
+   <key>
+    <column name="REPORTID"/>
+   </key>
+   <list-index base="0"/>
+   <one-to-many class="org.switchyard.quickstarts.demos.reporting.ReportNotes"/>
+  </list>
+  <list lazy="true" name="statusHistory" table="REPORTSTATUS">
+   <key>
+    <column name="REPORTID"/>
+   </key>
+   <list-index base="0"/>
+   <one-to-many class="org.switchyard.quickstarts.demos.reporting.ReportStatus"/>
+  </list>
+ </class>
+</hibernate-mapping>

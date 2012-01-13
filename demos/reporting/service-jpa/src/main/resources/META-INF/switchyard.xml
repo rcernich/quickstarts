@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<switchyard xmlns="urn:switchyard-config:switchyard:1.0" name="reporting-service"
+  targetNamespace="urn:org.switchyard.quickstarts.demos.reporting:reporting-service:0.0.1">
+  <composite xmlns="http://docs.oasis-open.org/ns/opencsa/sca/200912" name="reporting-service"
+    targetNamespace="urn:org.switchyard.quickstarts.demos.reporting:reporting-service:0.0.1">
+    <service name="ReportQueryService" promote="ManagementService">
+      <interface.java interface="org.switchyard.quickstarts.demos.reporting.services.ReportQueryService" />
+    </service>
+    <service name="ManagementService" promote="ManagementService">
+      <binding.soap xmlns="urn:switchyard-component-soap:config:1.0">
+        <wsdl>wsdl/ManagementService.wsdl</wsdl>
+        <contextPath>reporting</contextPath>
+      </binding.soap>
+    </service>
+  </composite>
+</switchyard>

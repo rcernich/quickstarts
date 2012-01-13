@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="qualified" elementFormDefault="qualified"
+  targetNamespace="urn:org.switchyard.quickstarts.demos.reporting:reporting-service:0.0.1" xmlns:tns="urn:org.switchyard.quickstarts.demos.reporting:reporting-service:0.0.1"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ReportId">
+    <xs:sequence>
+      <xs:element name="clientId" type="xs:string" />
+      <xs:element name="destinationId" type="xs:string" />
+      <xs:element name="reportingDate" type="xs:date" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ReportStatusEvent">
+    <xs:sequence>
+      <xs:element name="reportId" type="tns:ReportId" />
+      <xs:element name="timestamp" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ReportTransmissionFailedEvent">
+    <xs:complexContent>
+      <xs:extension base="tns:ReportStatusEvent">
+        <xs:sequence>
+          <xs:element name="error" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ReportGeneratedEvent">
+    <xs:complexContent>
+      <xs:extension base="tns:ReportStatusEvent">
+        <xs:sequence>
+          <xs:element name="reportSummary" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AttachNotesEvent">
+    <xs:complexContent>
+      <xs:extension base="tns:ReportStatusEvent">
+        <xs:sequence>
+          <xs:element name="notes" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="reportTrasmitted">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="event" type="tns:ReportStatusEvent" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="reportTransmissionFailed">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="event" type="tns:ReportTransmissionFailedEvent" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="reportRequired">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="reportId" type="tns:ReportId" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="reportProcessed">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="event" type="tns:ReportStatusEvent" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="reportGenerated">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="event" type="tns:ReportGeneratedEvent" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="reportClosed">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="event" type="tns:ReportStatusEvent" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="reportAcknowledged">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="event" type="tns:ReportStatusEvent" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="attachNotes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="event" type="tns:AttachNotesEvent" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
