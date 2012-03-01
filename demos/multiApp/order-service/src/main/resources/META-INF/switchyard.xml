@@ -11,6 +11,6 @@
         </service>
     </composite>
     <artifacts>
-        <artifact name="OrderService" url="http://localhost:8080/guvnorsoa/rest/packages/OrderService"/>
+        <artifact name="OrderService" url="http://localhost:8080/guvnorsoa/rest/packages/OrderService/binary"/>
     </artifacts>
 </switchyard>

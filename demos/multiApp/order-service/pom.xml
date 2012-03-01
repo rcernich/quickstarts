@@ -55,11 +55,6 @@
       <artifactId>switchyard-test</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.switchyard.quickstarts.demos</groupId>
-      <artifactId>switchyard-quickstart-demo-multi-artifacts</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <scope>test</scope>
@@ -86,7 +81,7 @@
         <configuration>
           <archive>
             <manifestEntries>
-              <Dependencies>deployment.OrderService.jar</Dependencies>
+              <Dependencies>${switchyard.manifest.dependencies}</Dependencies>
             </manifestEntries>
           </archive>
         </configuration>
@@ -94,6 +89,7 @@
       <plugin>
           <groupId>org.switchyard</groupId>
           <artifactId>switchyard-plugin</artifactId>
+          <extensions>true</extensions>
           <configuration>
             <scannerClassNames>
                 <param>org.switchyard.component.bean.config.model.BeanSwitchYardScanner</param>
