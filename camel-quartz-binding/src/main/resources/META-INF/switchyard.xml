@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?><switchyard xmlns="urn:switchyard-config:switchyard:1.0">
+<?xml version="1.0" encoding="UTF-8"?><switchyard xmlns="urn:switchyard-config:switchyard:1.1">
     <composite xmlns="http://docs.oasis-open.org/ns/opencsa/sca/200912" name="camel-quartz-binding" targetNamespace="urn:switchyard-quickstart:camel-quartz-binding:0.1.0">
         <service name="GreetingService" promote="GreetingService">
-            <quartz:binding.quartz xmlns:quartz="urn:switchyard-component-camel-quartz:config:1.0">
+            <quartz:binding.quartz xmlns:quartz="urn:switchyard-component-camel-quartz:config:1.1">
                 <quartz:name>EverySecondJob</quartz:name>
                 <quartz:cron>* * * * * ?</quartz:cron>
             </quartz:binding.quartz>
         </service>
         <component name="GreetingService">
-            <implementation.bean xmlns="urn:switchyard-component-bean:config:1.0" class="org.switchyard.quickstarts.camel.quartz.binding.GreetingServiceBean"/>
+            <implementation.bean xmlns="urn:switchyard-component-bean:config:1.1" class="org.switchyard.quickstarts.camel.quartz.binding.GreetingServiceBean"/>
             <service name="GreetingService">
                 <interface.java interface="org.switchyard.quickstarts.camel.quartz.binding.GreetingService"/>
             </service>

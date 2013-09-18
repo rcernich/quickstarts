@@ -12,9 +12,9 @@
  - See the License for the specific language governing permissions and
  - limitations under the License.
  -->
-<switchyard xmlns="urn:switchyard-config:switchyard:1.0"
-    xmlns:file="urn:switchyard-component-camel-file:config:1.0"
-    xmlns:swyd="urn:switchyard-config:switchyard:1.0">
+<switchyard xmlns="urn:switchyard-config:switchyard:1.1"
+    xmlns:file="urn:switchyard-component-camel-file:config:1.1"
+    xmlns:swyd="urn:switchyard-config:switchyard:1.1">
 
     <composite xmlns="http://docs.oasis-open.org/ns/opencsa/sca/200912" name="camel-service"
         targetNamespace="urn:switchyard-quickstart:camel-service:0.1.0">
@@ -24,22 +24,22 @@
             </file:binding.file>
         </service>
         <component name="JavaDSLBuilder">
-            <implementation.camel xmlns="urn:switchyard-component-camel:config:1.0">
+            <implementation.camel xmlns="urn:switchyard-component-camel:config:1.1">
                 <java class="org.switchyard.quickstarts.camel.service.JavaDSLBuilder"/>
             </implementation.camel>
             <service name="JavaDSL">
                 <interface.java interface="org.switchyard.quickstarts.camel.service.JavaDSL"/>
             </service>
             <reference name="XMLService">
-                <swyd:interface.esb xmlns:swyd="urn:switchyard-config:switchyard:1.0" inputType="java:java.lang.String"/>
+                <swyd:interface.esb xmlns:swyd="urn:switchyard-config:switchyard:1.1" inputType="java:java.lang.String"/>
             </reference>
         </component>
         <component name="XMLComponent">
-            <implementation.camel xmlns="urn:switchyard-component-camel:config:1.0">
+            <implementation.camel xmlns="urn:switchyard-component-camel:config:1.1">
                 <xml path="META-INF/route.xml"/>
             </implementation.camel>
             <service name="XMLService">
-                <swyd:interface.esb xmlns:swyd="urn:switchyard-config:switchyard:1.0" inputType="java:java.lang.String"/>
+                <swyd:interface.esb xmlns:swyd="urn:switchyard-config:switchyard:1.1" inputType="java:java.lang.String"/>
             </service>
         </component>
     </composite>

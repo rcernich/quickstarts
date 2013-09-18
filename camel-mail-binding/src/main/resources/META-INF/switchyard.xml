@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?><switchyard xmlns="urn:switchyard-config:switchyard:1.0">
+<?xml version="1.0" encoding="UTF-8"?><switchyard xmlns="urn:switchyard-config:switchyard:1.1">
     <composite xmlns="http://docs.oasis-open.org/ns/opencsa/sca/200912" name="camel-mail-binding" targetNamespace="urn:switchyard-quickstart:camel-mail-binding:0.1.0">
         <service name="PrintService" promote="PrintService/PrintService">
-            <mail:binding.mail xmlns:mail="urn:switchyard-component-camel-mail:config:1.0">
+            <mail:binding.mail xmlns:mail="urn:switchyard-component-camel-mail:config:1.1">
                 <mail:host>localhost</mail:host>
                 <mail:username>camel</mail:username>
                 <mail:consume accountType="imap">
@@ -12,7 +12,7 @@
             </mail:binding.mail>
         </service>
         <reference multiplicity="1..1" name="OutgoingPrintService" promote="PrintService/OutgoingPrintService">
-            <mail:binding.mail xmlns:mail="urn:switchyard-component-camel-mail:config:1.0">
+            <mail:binding.mail xmlns:mail="urn:switchyard-component-camel-mail:config:1.1">
                 <mail:host>localhost</mail:host>
                 <mail:username>camel</mail:username>
                 <mail:produce>
@@ -23,7 +23,7 @@
             </mail:binding.mail>
         </reference>
         <component name="PrintService">
-            <implementation.bean xmlns="urn:switchyard-component-bean:config:1.0" class="org.switchyard.quickstarts.camel.mail.binding.PrintServiceImpl"/>
+            <implementation.bean xmlns="urn:switchyard-component-bean:config:1.1" class="org.switchyard.quickstarts.camel.mail.binding.PrintServiceImpl"/>
             <service name="PrintService">
                 <interface.java interface="org.switchyard.quickstarts.camel.mail.binding.PrintService"/>
             </service>

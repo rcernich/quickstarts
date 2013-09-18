@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?><switchyard xmlns="urn:switchyard-config:switchyard:1.0" name="switchyard-quickstart-jca-outbound-hornetq">
+<?xml version="1.0" encoding="UTF-8"?><switchyard xmlns="urn:switchyard-config:switchyard:1.1" name="switchyard-quickstart-jca-outbound-hornetq">
     <composite xmlns="http://docs.oasis-open.org/ns/opencsa/sca/200912" name="jca-outbound-hornetq" targetNamespace="urn:switchyard-quickstart:jca-outbound-hornetq:0.1.0">
         <sca:service xmlns:sca="http://docs.oasis-open.org/ns/opencsa/sca/200912" name="OrderService" promote="OrderService/OrderService">
-            <binding.jca xmlns="urn:switchyard-component-jca:config:1.0">
-                <operationSelector xmlns="urn:switchyard-config:switchyard:1.0" operationName="process"/>
+            <binding.jca xmlns="urn:switchyard-component-jca:config:1.1">
+                <operationSelector xmlns="urn:switchyard-config:switchyard:1.1" operationName="process"/>
                 <inboundConnection>
                     <resourceAdapter name="hornetq-ra.rar"/>
                     <activationSpec>
@@ -18,7 +18,7 @@
             </binding.jca>
         </sca:service>
         <sca:reference xmlns:sca="http://docs.oasis-open.org/ns/opencsa/sca/200912" multiplicity="1..1" name="ShippingReference" promote="OrderService/ShippingReference">
-            <binding.jca xmlns="urn:switchyard-component-jca:config:1.0">
+            <binding.jca xmlns="urn:switchyard-component-jca:config:1.1">
                 <outboundConnection>
                     <resourceAdapter name="hornetq-ra.rar"/>
                     <connection jndiName="java:/JmsXA"/>
@@ -31,7 +31,7 @@
             </binding.jca>
         </sca:reference>
         <sca:reference xmlns:sca="http://docs.oasis-open.org/ns/opencsa/sca/200912" multiplicity="1..1" name="FillingStockReference" promote="OrderService/FillingStockReference">
-            <binding.jca xmlns="urn:switchyard-component-jca:config:1.0">
+            <binding.jca xmlns="urn:switchyard-component-jca:config:1.1">
                 <outboundConnection>
                     <resourceAdapter name="hornetq-ra.rar"/>
                     <connection jndiName="java:/JmsXA"/>
@@ -44,7 +44,7 @@
             </binding.jca>
         </sca:reference>
         <component name="OrderService">
-            <implementation.bean xmlns="urn:switchyard-component-bean:config:1.0" class="org.switchyard.quickstarts.jca.outbound.OrderServiceBean"/>
+            <implementation.bean xmlns="urn:switchyard-component-bean:config:1.1" class="org.switchyard.quickstarts.jca.outbound.OrderServiceBean"/>
             <service name="OrderService">
                 <interface.java interface="org.switchyard.quickstarts.jca.outbound.OrderService"/>
             </service>

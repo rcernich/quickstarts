@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?><switchyard xmlns="urn:switchyard-config:switchyard:1.0">
+<?xml version="1.0" encoding="UTF-8"?><switchyard xmlns="urn:switchyard-config:switchyard:1.1">
     <composite xmlns="http://docs.oasis-open.org/ns/opencsa/sca/200912" name="camel-ftp-binding" targetNamespace="urn:switchyard-quickstart:camel-ftp-binding:0.1.0">
         <service name="GreetingService" promote="GreetingService/GreetingService">
-            <ftp:binding.ftp xmlns:ftp="urn:switchyard-component-camel-ftp:config:1.0">
+            <ftp:binding.ftp xmlns:ftp="urn:switchyard-component-camel-ftp:config:1.1">
                 <ftp:directory>.</ftp:directory>
                 <ftp:host>localhost</ftp:host>
                 <ftp:port>2222</ftp:port>
@@ -14,7 +14,7 @@
             </ftp:binding.ftp>
         </service>
         <component name="GreetingService">
-            <implementation.bean xmlns="urn:switchyard-component-bean:config:1.0" class="org.switchyard.quickstarts.camel.ftp.binding.GreetingServiceBean"/>
+            <implementation.bean xmlns="urn:switchyard-component-bean:config:1.1" class="org.switchyard.quickstarts.camel.ftp.binding.GreetingServiceBean"/>
             <service name="GreetingService">
                 <interface.java interface="org.switchyard.quickstarts.camel.ftp.binding.GreetingService"/>
             </service>

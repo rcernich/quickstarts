@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?><switchyard xmlns="urn:switchyard-config:switchyard:1.0">
+<?xml version="1.0" encoding="UTF-8"?><switchyard xmlns="urn:switchyard-config:switchyard:1.1">
     <composite xmlns="http://docs.oasis-open.org/ns/opencsa/sca/200912" name="camel-amqp-binding" targetNamespace="urn:switchyard-quickstart:camel-amqp-binding:0.1.0">
         <service name="GreetingService" promote="GreetingService">
-            <amqp:binding.amqp xmlns:amqp="urn:switchyard-component-camel-amqp:config:1.0">
+            <amqp:binding.amqp xmlns:amqp="urn:switchyard-component-camel-amqp:config:1.1">
                 <amqp:queue>ping</amqp:queue>
                 <amqp:connectionFactory>qpidConnectionFactory</amqp:connectionFactory>
                 <amqp:username>guest</amqp:username>
@@ -9,7 +9,7 @@
             </amqp:binding.amqp>
         </service>
         <component name="GreetingService">
-            <implementation.bean xmlns="urn:switchyard-component-bean:config:1.0" class="org.switchyard.quickstarts.camel.amqp.binding.GreetingServiceBean"/>
+            <implementation.bean xmlns="urn:switchyard-component-bean:config:1.1" class="org.switchyard.quickstarts.camel.amqp.binding.GreetingServiceBean"/>
             <service name="GreetingService">
                 <interface.java interface="org.switchyard.quickstarts.camel.amqp.binding.GreetingService"/>
             </service>

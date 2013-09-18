@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?><switchyard xmlns="urn:switchyard-config:switchyard:1.0">
+<?xml version="1.0" encoding="UTF-8"?><switchyard xmlns="urn:switchyard-config:switchyard:1.1">
     <composite xmlns="http://docs.oasis-open.org/ns/opencsa/sca/200912" name="policy-transaction" targetNamespace="urn:switchyard-quickstart-demo:policy-transaction:0.1.0">
         <service name="WorkService" promote="WorkService">
-            <binding.jca xmlns="urn:switchyard-component-jca:config:1.0">
+            <binding.jca xmlns="urn:switchyard-component-jca:config:1.1">
                 <inboundConnection>
                     <resourceAdapter name="hornetq-ra.rar"/>
                     <activationSpec>
@@ -15,7 +15,7 @@
                     <transacted>true</transacted>
                 </inboundInteraction>
             </binding.jca>
-            <binding.jca xmlns="urn:switchyard-component-jca:config:1.0">
+            <binding.jca xmlns="urn:switchyard-component-jca:config:1.1">
                 <inboundConnection>
                     <resourceAdapter name="hornetq-ra.rar"/>
                     <activationSpec>
@@ -31,7 +31,7 @@
             </binding.jca>
         </service>
         <reference multiplicity="0..1" name="StoreAService" promote="TaskAService/StoreAService">
-            <binding.jca xmlns="urn:switchyard-component-jca:config:1.0">
+            <binding.jca xmlns="urn:switchyard-component-jca:config:1.1">
                 <outboundConnection>
                     <resourceAdapter name="hornetq-ra.rar"/>
                     <connection jndiName="java:/JmsXA"/>
@@ -44,7 +44,7 @@
             </binding.jca>
         </reference>
         <reference multiplicity="0..1" name="StoreBService" promote="TaskBService/StoreBService">
-            <binding.jca xmlns="urn:switchyard-component-jca:config:1.0">
+            <binding.jca xmlns="urn:switchyard-component-jca:config:1.1">
                 <outboundConnection>
                     <resourceAdapter name="hornetq-ra.rar"/>
                     <connection jndiName="java:/JmsXA"/>
@@ -57,7 +57,7 @@
             </binding.jca>
         </reference>
         <reference multiplicity="0..1" name="StoreCService" promote="TaskCService/StoreCService">
-            <binding.jca xmlns="urn:switchyard-component-jca:config:1.0">
+            <binding.jca xmlns="urn:switchyard-component-jca:config:1.1">
                 <outboundConnection>
                     <resourceAdapter name="hornetq-ra.rar"/>
                     <connection jndiName="java:/JmsXA"/>
@@ -70,7 +70,7 @@
             </binding.jca>
         </reference>
         <component name="TaskBService">
-            <implementation.bean xmlns="urn:switchyard-component-bean:config:1.0" class="org.switchyard.quickstarts.demo.policy.transaction.TaskBServiceBean" requires="managedTransaction.Local"/>
+            <implementation.bean xmlns="urn:switchyard-component-bean:config:1.1" class="org.switchyard.quickstarts.demo.policy.transaction.TaskBServiceBean" requires="managedTransaction.Local"/>
             <service name="TaskBService" requires="suspendsTransaction">
                 <interface.java interface="org.switchyard.quickstarts.demo.policy.transaction.TaskBService"/>
             </service>
@@ -79,7 +79,7 @@
             </reference>
         </component>
         <component name="TaskAService">
-            <implementation.bean xmlns="urn:switchyard-component-bean:config:1.0" class="org.switchyard.quickstarts.demo.policy.transaction.TaskAServiceBean" requires="managedTransaction.Global"/>
+            <implementation.bean xmlns="urn:switchyard-component-bean:config:1.1" class="org.switchyard.quickstarts.demo.policy.transaction.TaskAServiceBean" requires="managedTransaction.Global"/>
             <service name="TaskAService" requires="propagatesTransaction">
                 <interface.java interface="org.switchyard.quickstarts.demo.policy.transaction.TaskAService"/>
             </service>
@@ -88,7 +88,7 @@
             </reference>
         </component>
         <component name="TaskCService">
-            <implementation.bean xmlns="urn:switchyard-component-bean:config:1.0" class="org.switchyard.quickstarts.demo.policy.transaction.TaskCServiceBean" requires="noManagedTransaction"/>
+            <implementation.bean xmlns="urn:switchyard-component-bean:config:1.1" class="org.switchyard.quickstarts.demo.policy.transaction.TaskCServiceBean" requires="noManagedTransaction"/>
             <service name="TaskCService" requires="suspendsTransaction">
                 <interface.java interface="org.switchyard.quickstarts.demo.policy.transaction.TaskCService"/>
             </service>
@@ -97,7 +97,7 @@
             </reference>
         </component>
         <component name="WorkService">
-            <implementation.bean xmlns="urn:switchyard-component-bean:config:1.0" class="org.switchyard.quickstarts.demo.policy.transaction.WorkServiceBean"/>
+            <implementation.bean xmlns="urn:switchyard-component-bean:config:1.1" class="org.switchyard.quickstarts.demo.policy.transaction.WorkServiceBean"/>
             <service name="WorkService" requires="propagatesTransaction">
                 <interface.java interface="org.switchyard.quickstarts.demo.policy.transaction.WorkService"/>
             </service>

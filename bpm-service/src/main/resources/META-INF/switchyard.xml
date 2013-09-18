@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<switchyard xmlns="urn:switchyard-config:switchyard:1.0">
+<switchyard xmlns="urn:switchyard-config:switchyard:1.1">
     <composite xmlns="http://docs.oasis-open.org/ns/opencsa/sca/200912" name="osdemo" targetNamespace="urn:switchyard-quickstart:bpm-service:1.0">
         <service name="ProcessOrder" promote="ProcessOrder">
             <interface.wsdl interface="wsdl/ProcessOrder.wsdl#wsdl.porttype(ProcessOrder)"/>
-            <binding.soap xmlns="urn:switchyard-component-soap:config:1.0">
+            <binding.soap xmlns="urn:switchyard-component-soap:config:1.1">
                 <wsdl>wsdl/ProcessOrder.wsdl</wsdl>
                 <socketAddr>localhost:${soapPort:18001}</socketAddr>
                 <contextPath>swydws</contextPath>
             </binding.soap>
         </service>
         <component name="ProcessOrder">
-            <implementation.bpm xmlns="urn:switchyard-component-bpm:config:1.0" processId="ProcessOrder">
+            <implementation.bpm xmlns="urn:switchyard-component-bpm:config:1.1" processId="ProcessOrder">
                 <!--
                 <listeners>
                     <listener class="org.drools.core.event.DebugProcessEventListener"/>
@@ -48,25 +48,25 @@
             </reference>
         </component>
         <component name="Shipping">
-            <implementation.bean xmlns="urn:switchyard-component-bean:config:1.0" class="org.switchyard.quickstarts.bpm.service.ShippingBean"/>
+            <implementation.bean xmlns="urn:switchyard-component-bean:config:1.1" class="org.switchyard.quickstarts.bpm.service.ShippingBean"/>
             <service name="Shipping">
                 <interface.java interface="org.switchyard.quickstarts.bpm.service.Shipping"/>
             </service>
         </component>
         <component name="BackOrder">
-            <implementation.bean xmlns="urn:switchyard-component-bean:config:1.0" class="org.switchyard.quickstarts.bpm.service.BackOrderBean"/>
+            <implementation.bean xmlns="urn:switchyard-component-bean:config:1.1" class="org.switchyard.quickstarts.bpm.service.BackOrderBean"/>
             <service name="BackOrder">
                 <interface.java interface="org.switchyard.quickstarts.bpm.service.BackOrder"/>
             </service>
         </component>
         <component name="Inventory">
-            <implementation.bean xmlns="urn:switchyard-component-bean:config:1.0" class="org.switchyard.quickstarts.bpm.service.InventoryBean"/>
+            <implementation.bean xmlns="urn:switchyard-component-bean:config:1.1" class="org.switchyard.quickstarts.bpm.service.InventoryBean"/>
             <service name="Inventory">
                 <interface.java interface="org.switchyard.quickstarts.bpm.service.Inventory"/>
             </service>
         </component>
     </composite>
-    <transforms xmlns:xform="urn:switchyard-config:transform:1.0">
+    <transforms xmlns:xform="urn:switchyard-config:transform:1.1">
         <xform:transform.jaxb contextPath="org.switchyard.quickstarts.bpm.service.data" 
             from="java:org.switchyard.quickstarts.bpm.service.data.OrderAck" 
             to="{urn:switchyard-quickstart:bpm-service:1.0}submitOrderResponse"/>

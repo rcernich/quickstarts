@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?><switchyard xmlns="urn:switchyard-config:switchyard:1.0">
+<?xml version="1.0" encoding="UTF-8"?><switchyard xmlns="urn:switchyard-config:switchyard:1.1">
     <composite xmlns="http://docs.oasis-open.org/ns/opencsa/sca/200912" name="rules-camel-cbr" targetNamespace="urn:switchyard-quickstart:rules-camel-cbr:0.1.0">
         <component name="RoutingService">
-            <implementation.camel xmlns="urn:switchyard-component-camel:config:1.0">
+            <implementation.camel xmlns="urn:switchyard-component-camel:config:1.1">
                 <xml path="META-INF/route.xml"/>
             </implementation.camel>
             <service name="RoutingService">
@@ -21,7 +21,7 @@
             </reference>
         </component>
         <component name="DestinationService">
-            <implementation.rules xmlns="urn:switchyard-component-rules:config:1.0">
+            <implementation.rules xmlns="urn:switchyard-component-rules:config:1.1">
                 <!--
                 <listeners>
                     <listener class="org.kie.api.event.rule.DebugAgendaEventListener"/>
@@ -46,19 +46,19 @@
             </service>
         </component>
         <component name="GreenService">
-            <implementation.bean xmlns="urn:switchyard-component-bean:config:1.0" class="org.switchyard.quickstarts.rules.camel.cbr.GreenServiceBean"/>
+            <implementation.bean xmlns="urn:switchyard-component-bean:config:1.1" class="org.switchyard.quickstarts.rules.camel.cbr.GreenServiceBean"/>
             <service name="GreenService">
                 <interface.java interface="org.switchyard.quickstarts.rules.camel.cbr.GreenService"/>
             </service>
         </component>
         <component name="BlueService">
-            <implementation.bean xmlns="urn:switchyard-component-bean:config:1.0" class="org.switchyard.quickstarts.rules.camel.cbr.BlueServiceBean"/>
+            <implementation.bean xmlns="urn:switchyard-component-bean:config:1.1" class="org.switchyard.quickstarts.rules.camel.cbr.BlueServiceBean"/>
             <service name="BlueService">
                 <interface.java interface="org.switchyard.quickstarts.rules.camel.cbr.BlueService"/>
             </service>
         </component>
         <component name="RedService">
-            <implementation.bean xmlns="urn:switchyard-component-bean:config:1.0" class="org.switchyard.quickstarts.rules.camel.cbr.RedServiceBean"/>
+            <implementation.bean xmlns="urn:switchyard-component-bean:config:1.1" class="org.switchyard.quickstarts.rules.camel.cbr.RedServiceBean"/>
             <service name="RedService">
                 <interface.java interface="org.switchyard.quickstarts.rules.camel.cbr.RedService"/>
             </service>

@@ -17,7 +17,7 @@
         <level value="ERROR"/>
     </logger>
     <logger name="org.apache.commons.httpclient.HttpMethodBase">
-        <level value="ERROR"/>
+        <level value="INFO"/>
     </logger>
 	<logger name="org.jboss.interceptor.util.InterceptionTypeRegistry">
 		<level value="ERROR"/>

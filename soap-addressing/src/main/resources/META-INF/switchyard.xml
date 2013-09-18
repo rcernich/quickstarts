@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<switchyard xmlns="urn:switchyard-config:switchyard:1.0"
-    xmlns:camel="urn:switchyard-component-camel:config:1.0"
+<switchyard xmlns="urn:switchyard-config:switchyard:1.1"
+    xmlns:camel="urn:switchyard-component-camel:config:1.1"
     xmlns:sca="http://docs.oasis-open.org/ns/opencsa/sca/200912"
-    xmlns:soap="urn:switchyard-component-soap:config:1.0"
-    xmlns:file="urn:switchyard-component-camel-file:config:1.0"
+    xmlns:soap="urn:switchyard-component-soap:config:1.1"
+    xmlns:file="urn:switchyard-component-camel-file:config:1.1"
     name="switchyard-quickstart-soap-addressing" targetNamespace="urn:switchyard-quickstart:soap-addressing:1.0">
   <sca:composite name="switchyard-quickstart-soap-addressing" targetNamespace="urn:switchyard-quickstart:soap-addressing:1.0">
 
@@ -149,7 +149,7 @@
     </sca:component>
 
   </sca:composite>
-  <transforms xmlns:xform="urn:switchyard-config:transform:1.0">
+  <transforms xmlns:xform="urn:switchyard-config:transform:1.1">
     <xform:transform.jaxb from="{urn:switchyard-quickstart:soap-addressing:1.0}order" to="java:org.switchyard.quickstarts.soap.addressing.Order"/>
     <xform:transform.jaxb from="java:org.switchyard.quickstarts.soap.addressing.Order" to="{urn:switchyard-quickstart:soap-addressing:1.0}order"/>
     <xform:transform.jaxb from="java:org.switchyard.quickstarts.soap.addressing.OrderResponse" to="{urn:switchyard-quickstart:soap-addressing:1.0}orderResponse"/>
