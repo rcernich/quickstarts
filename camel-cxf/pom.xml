@@ -40,10 +40,14 @@
         <maven.compiler.target>1.6</maven.compiler.target>
         <maven.compiler.source>1.6</maven.compiler.source>
         <switchyard.osgi.export.pkg>org.switchyard.quickstarts.camel.cxf*</switchyard.osgi.export.pkg>
+        <switchyard.capability.version.filter>&amp;(version&gt;=$(version;==;${switchyard.osgi.version}))(!(version&gt;=$(version;=+;${switchyard.osgi.version})))</switchyard.capability.version.filter>
         <switchyard.osgi.require.capability>
             org.ops4j.pax.cdi.extension; filter:="(extension=switchyard-component-bean)",
             org.ops4j.pax.cdi.extension; filter:="(extension=deltaspike-core-api)",
-            osgi.extender; filter:="(osgi.extender=pax.cdi)"
+            osgi.extender; filter:="(osgi.extender=pax.cdi)",
+            org.switchyard; filter:="(${switchyard.capability.version.filter})",
+            org.switchyard.component.camel.route; filter:="(${switchyard.capability.version.filter})",
+            org.switchyard.component.camel.cxf; filter:="(${switchyard.capability.version.filter})"
         </switchyard.osgi.require.capability>
         <switchyard.osgi.provide.capability/>
     </properties>
